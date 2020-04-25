@@ -14,9 +14,11 @@ import {
 const PayoutAmountField = ({ ...others }) => {
 	const {
 		dispatch, 
-		payoutAmountError
+		payoutAmountError,
+		rawPayoutAmount
 	} = useStoreon(
-		"payoutAmountError"
+		"payoutAmountError",
+		"rawPayoutAmount"
 	);
 
 	const onChange = e => {
@@ -37,6 +39,7 @@ const PayoutAmountField = ({ ...others }) => {
 				<Input
 					onChange={onChange}
 					isColor={state}
+					value={rawPayoutAmount}
 					isSize="medium"
 					type="text"
 					placeholder='Введіть суму виплат'

@@ -14,9 +14,11 @@ import {
 const LoanTermField = ({ ...others }) => {
 	const {
 		dispatch, 
-		loadTermError
+		loadTermError,
+		rawLoadTerm,
 	} = useStoreon(
-		"loadTermError"
+		"loadTermError",
+		"rawLoadTerm",
 	);
 
 	const onChange = e => {
@@ -37,6 +39,7 @@ const LoanTermField = ({ ...others }) => {
 				<Input
 					onChange={onChange}
 					isColor={state}
+					value={rawLoadTerm}
 					isSize="medium"
 					type="text"
 					placeholder="Введіть термін кредитування"
