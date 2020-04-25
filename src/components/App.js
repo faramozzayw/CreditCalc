@@ -14,12 +14,13 @@ import {
 import LoanTermField from "./Fields/LoanTermField";
 import InterestRateField from "./Fields/InterestRateField";
 import PayoutAmountField from "./Fields/PayoutAmountField";
+import ResetButton from "./Buttons/ResetButton";
 
 const App = () => {
 	return (
 		<div className="App">
 			<main>
-				<Hero isColor="success" isFullHeight>
+				<Hero isColor="dark" isFullHeight>
 					<HeroHeader>
 						<Title
 							isSize={4}
@@ -35,6 +36,7 @@ const App = () => {
 								<PayoutAmountField />
 								<InterestRateField />
 								<LoanTermField />
+								<ResetButton />
 							</form>
 						</Container>
 					</HeroBody>

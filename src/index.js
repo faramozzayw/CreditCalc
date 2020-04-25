@@ -4,7 +4,7 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
-import { StoreContext  } from "storeon/react";
+import { StoreContext } from "storeon/react";
 import { store } from "./store/index";
 
 import "./index.css";
