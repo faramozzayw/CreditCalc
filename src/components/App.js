@@ -5,14 +5,15 @@ import {
 	Hero,
 	HeroHeader,
 	HeroBody,
-	HeroFooter,
 	Container,
-	Field,
-	Label,
-	Control,
-	Input,
-	Title
+	Icon,
+	Title,
+	Footer,
 } from "bloomer";
+
+import LoanTermField from "./Fields/LoanTermField";
+import InterestRateField from "./Fields/InterestRateField";
+import PayoutAmountField from "./Fields/PayoutAmountField";
 
 const App = () => {
 	return (
@@ -31,44 +32,20 @@ const App = () => {
 					<HeroBody>
 						<Container hasTextAlign='centered'>
 							<form >
-								<Field>
-									<Label hasTextColor="light">Сума виплат</Label>
-									<Control>
-										<Input
-											isSize="medium"
-											type="text"
-											placeholder='Введіть суму виплат'
-										/>
-									</Control>
-								</Field>
-								<Field>
-									<Label hasTextColor="light">Відсоткова ставка</Label>
-									<Control>
-										<Input 
-											isSize="medium"
-											type="text"
-											placeholder='Введіть відсоткову ставку'
-										/>
-									</Control>
-								</Field>
-								<Field>
-									<Label hasTextColor="light">Термін кредитування</Label>
-									<Control>
-										<Input 
-											isSize="medium"
-											type="text"
-											placeholder='Введіть термін кредитування'
-										/>
-									</Control>
-								</Field>
+								<PayoutAmountField />
+								<InterestRateField />
+								<LoanTermField />
 							</form>
 						</Container>
 					</HeroBody>
-					<HeroFooter>
-						Powered by faramo_zayw
-					</HeroFooter>
 				</Hero>
 			</main>
+			<Footer id='footer'>
+				<p>
+					Made with<Icon hasTextColor="danger" className="fa fa-heart"/> 
+					by faramo_zayw
+				</p>
+			</Footer>
 		</div>
 	);
 }

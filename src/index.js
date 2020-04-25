@@ -7,6 +7,8 @@ import * as serviceWorker from './serviceWorker';
 import "./index.css";
 import "bulma/css/bulma.css";
 
+import "font-awesome/css/font-awesome.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
