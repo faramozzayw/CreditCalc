@@ -4,16 +4,21 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 
+import { StoreContext  } from "storeon/react";
+import { store } from "./store/index";
+
 import "./index.css";
 import "bulma/css/bulma.css";
 
 import "font-awesome/css/font-awesome.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+	<StoreContext.Provider value={store} >
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</StoreContext.Provider>,
+	document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
