@@ -1,5 +1,8 @@
 import { capitalize } from "./../utils/fn";
 
+export const generateRawFieldName = fieldName => `raw${capitalize(fieldName)}`;
+export const generateErrorFieldName = fieldName => `${fieldName}Error`;
+
 export const checkRawValue = rawValue => {
 	if(rawValue.trim() === "") {
 		return [rawValue,false];
@@ -16,8 +19,8 @@ export const checkRawValue = rawValue => {
 }
 
 export const generateReducerCallback = (fieldName) => {
-	const errorKey = `${fieldName}Error`;
-	const rawKey = `raw${capitalize(fieldName)}`;
+	const errorKey = generateErrorFieldName(fieldName);
+	const rawKey = generateRawFieldName(fieldName);
 
 	return (state, rawValue) => {
 		const [value, valueError] = checkRawValue(rawValue);

@@ -14,7 +14,10 @@ const PayoutAmountField = ({ ...others }) => {
 		"rawPayoutAmount"
 	);
 
-	const onChange = e => dispatch("updatePayoutAmount", e.target.value);
+	const onChange = e => {
+		dispatch("updatePayoutAmount", e.target.value);
+		dispatch("need calc?");
+	}
 
 	return (
 		<CalcField

@@ -1,0 +1,23 @@
+{
+    "fields": [
+        "interestRate",
+        "loadTerm",
+        "payoutAmount"
+    ],
+    "initialState": {
+        "rawInterestRate": "",
+        "rawLoadTerm": "",
+        "rawPayoutAmount": "",
+    
+        "interestRate": 0,
+        "loadTerm": 0,
+        "payoutAmount": 0,
+    
+        "interestRateError": false,
+        "loadTermError": false,
+        "payoutAmountError": false,
+    
+        "needToCalc": false,
+        "globalError": false
+    }
+}

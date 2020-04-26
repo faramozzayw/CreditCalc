@@ -14,7 +14,10 @@ const LoanTermField = ({ ...others }) => {
 		"rawLoadTerm",
 	);
 
-	const onChange = e => dispatch("updateLoadTerm", e.target.value);
+	const onChange = e => {
+		dispatch("updateLoadTerm", e.target.value);
+		dispatch("need calc?");
+	}
 
 	return (
 		<CalcField

@@ -32,7 +32,7 @@ const App = () => {
 					</HeroHeader>
 					<HeroBody>
 						<Container hasTextAlign='centered'>
-							<form >
+							<form>
 								<PayoutAmountField />
 								<InterestRateField />
 								<LoanTermField />

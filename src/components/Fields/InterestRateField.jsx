@@ -14,7 +14,10 @@ const InterestRateField = ({ ...others }) => {
 		"rawInterestRate"
 	);
 
-	const onChange = e => dispatch("updateInterestRate", e.target.value);
+	const onChange = e => {
+		dispatch("updateInterestRate", e.target.value);
+		dispatch("need calc?");
+	}
 
 
 	return (
