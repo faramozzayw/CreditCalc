@@ -18,6 +18,8 @@
         "payoutAmountError": false,
     
         "needToCalc": false,
+        "calcValue": null,
+        
         "globalError": false
     }
 }

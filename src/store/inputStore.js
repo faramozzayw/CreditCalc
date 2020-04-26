@@ -5,7 +5,7 @@ import {
 	generateErrorFieldName
 } from "./utils";
 
-import { isEmptyString, capitalize } from "./../utils/fn";
+import { isEmptyString } from "./../utils/fn";
 import inputConfig from "./inputConfig.json";
 
 const { fields, initialState } = inputConfig;
@@ -31,10 +31,25 @@ const inputStore = store => {
 			.length !== 0;
 
 		if(count === needToCalc && !globalError) {
-			return console.log("yes");
+			const filterFn = item => isEmptyString(state[generateRawFieldName(item)])
+			const calcValue = fields.filter(filterFn)[0];
+			
+			console.log(`yes, need to calc '${calcValue}'`);
+			
+			return {
+				...state,
+				calcValue,
+				globalError,
+				needToCalc: true
+			}
 		}
-
-		return console.log("no");
+		
+		console.log("no");
+		
+		return {
+			...state,
+			globalError,
+		}
 	});
 }
 
