@@ -2,14 +2,7 @@ import React from 'react';
 
 import { useStoreon } from "storeon/react";
 
-import {
-	Field,
-	Label,
-	Control,
-	Input,
-	Icon,
-	Help,
-} from "bloomer";
+import CalcField from "./CalcField";
 
 const PayoutAmountField = ({ ...others }) => {
 	const {
@@ -21,34 +14,18 @@ const PayoutAmountField = ({ ...others }) => {
 		"rawPayoutAmount"
 	);
 
-	const onChange = e => {
-		dispatch("updatePayoutAmount", e.target.value);
-	}
+	const onChange = e => dispatch("updatePayoutAmount", e.target.value);
 
-	const state = payoutAmountError ? "danger" : "success";
-
-    return (
-        <Field>
-			<Label isSize="medium" hasTextColor="light">Сума виплат</Label>
-			<Control hasIcons>
-				<Icon
-					className="fa fa-calendar-check-o"
-					isSize="medium"
-					isAlign="left"
-				/>
-				<Input
-					onChange={onChange}
-					isColor={state}
-					value={rawPayoutAmount}
-					isSize="medium"
-					type="text"
-					placeholder='Введіть суму виплат'
-					required
-				/>
-			</Control>
-			{ payoutAmountError && <Help isColor='danger'>Incorrect value!</Help> }
-		</Field>
-    )
+	return (
+		<CalcField
+			rawValue={rawPayoutAmount}
+			valueError={payoutAmountError}
+			icon="fa fa-calendar-check-o"
+			labelText="Сума виплат"
+			inputText="Введіть суму виплат"
+			onChange={onChange}
+		/>
+	)
 }
 
 export default PayoutAmountField;
