@@ -3,22 +3,26 @@ import { capitalize } from "./../utils/fn";
 export const generateRawFieldName = fieldName => `raw${capitalize(fieldName)}`;
 export const generateErrorFieldName = fieldName => `${fieldName}Error`;
 
-export const checkRawValue = rawValue => {
+export const checkRawValue = (rawValue = "") => {
 	if(rawValue.trim() === "") {
 		return [rawValue,false];
 	}
 
-	const value = Number.parseFloat(rawValue)
+	const rValue = rawValue.replace(/,/gi, ".");
+
+	const value = Number.parseFloat(rValue);
+
 	const valueError = (
 		Number.isNaN(value) ||
 		!Number.isFinite(value) ||
-		(/[^\d,.]/i).test(rawValue)
+		(/[^\d\.]/gi).test(rValue) ||
+		rValue.match(/\./gi)?.length > 1
 	);
 
 	return [value, valueError];
 }
 
-export const generateReducerCallback = (fieldName) => {
+export const generateReducerCallback = (fieldName = "") => {
 	const errorKey = generateErrorFieldName(fieldName);
 	const rawKey = generateRawFieldName(fieldName);
 
@@ -34,7 +38,7 @@ export const generateReducerCallback = (fieldName) => {
 	}
 }
 
-export const generateDispatchListener = fieldName => {
+export const generateDispatchListener = (fieldName = "") => {
 	const h = "update" + capitalize(fieldName)
 	
 	return [h, generateReducerCallback(fieldName)];
