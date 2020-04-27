@@ -51,12 +51,11 @@ const inputStore = store => {
 
 	store.on("calc", state => {
 		let { calcValue } = state;
-		console.log(calcValue);
-		console.log(calcFn[calcValue]);
 
 		return {
 			...state,
 			[calcValue]: calcFn[calcValue](),
+			needToCalc: false
 		}
 	});
 }

@@ -18,13 +18,13 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 		if(isCalcValue && value === null) {
 			dispatch("calc");
 		}
-	});
+	}, [isCalcValue]);
 
 	const state = valueError ? "danger" : "success";
 	const finalState = rawValue === "" ? "" : state;
 
 	const finalValue = value ? value : "";
-	
+
 	return (
 		<Field>
 			<Label
@@ -33,7 +33,6 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 			>{labelText}</Label>
 			<Control 
 				hasIcons
-				isLoading={isCalcValue}
 			>
 				<Icon
 					className={icon}
@@ -45,7 +44,6 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 					isActive={isCalcValue}
 					isColor={isCalcValue ? "warning" : finalState}
 					value={isCalcValue ? finalValue : rawValue}
-					//value={rawValue}
 					isSize="medium"
 					type="text"
 					placeholder={inputText}

@@ -19,7 +19,7 @@ export const generateErrorFieldName = fieldName => `${fieldName}Error`;
 
 export const checkRawValue = (rawValue = "") => {
 	if(rawValue.trim() === "") {
-		return [rawValue,false];
+		return [rawValue, false];
 	}
 
 	const rValue = rawValue.replace(/,/gi, ".");
@@ -48,8 +48,6 @@ export const generateReducerCallback = (fieldName = "") => {
 			[fieldName]: isEmptyString(value) ? null : value,
 			[errorKey]: valueError,
 			[rawKey]: rawValue,
-			calcValue: null,
-			needToCalc: false,
 		}
 	}
 }
