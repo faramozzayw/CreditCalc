@@ -1,20 +1,20 @@
 {
     "fields": [
         "interestRate",
-        "loadTerm",
+        "loanTerm",
         "payoutAmount"
     ],
     "initialState": {
         "rawInterestRate": "",
-        "rawLoadTerm": "",
+        "rawLoanTerm": "",
         "rawPayoutAmount": "",
     
-        "interestRate": 0,
-        "loadTerm": 0,
-        "payoutAmount": 0,
+        "interestRate": null,
+        "loanTerm": null,
+        "payoutAmount": null,
     
         "interestRateError": false,
-        "loadTermError": false,
+        "loanTermError": false,
         "payoutAmountError": false,
     
         "needToCalc": false,

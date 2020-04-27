@@ -10,10 +10,12 @@ const PayoutAmountField = ({ ...others }) => {
 		payoutAmountError,
 		rawPayoutAmount,
 		calcValue,
+		payoutAmount,
 	} = useStoreon(
 		"payoutAmountError",
 		"rawPayoutAmount",
 		"calcValue",
+		"payoutAmount",
 	);
 
 	const onChange = e => {
@@ -30,6 +32,7 @@ const PayoutAmountField = ({ ...others }) => {
 			inputText="Введіть суму виплат"
 			onChange={onChange}
 			isCalcValue={calcValue === "payoutAmount"}
+			value={payoutAmount}
 		/>
 	)
 }

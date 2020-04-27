@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useStoreon } from "storeon/react";
 
@@ -12,12 +12,18 @@ import {
 } from "bloomer";
 
 const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, onChange, isCalcValue }) => {
-	const {
-		dispatch
-	} = useStoreon(null);
+	const {	dispatch } = useStoreon();
+	
+	useEffect(() => {
+		if(isCalcValue && value === null) {
+			dispatch("calc");
+		}
+	});
 
 	const state = valueError ? "danger" : "success";
 	const finalState = rawValue === "" ? "" : state;
+
+	const finalValue = value ? value : "";
 	
 	return (
 		<Field>
@@ -38,8 +44,8 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 					onChange={onChange}
 					isActive={isCalcValue}
 					isColor={isCalcValue ? "warning" : finalState}
-					// => value={isCalcValue ? value : rawValue}
-					value={rawValue}
+					value={isCalcValue ? finalValue : rawValue}
+					//value={rawValue}
 					isSize="medium"
 					type="text"
 					placeholder={inputText}

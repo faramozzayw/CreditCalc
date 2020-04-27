@@ -5,6 +5,7 @@ import {
 	generateRawFieldName,
 	generateErrorFieldName
 } from "./../utils/fn";
+import { calcFn } from "./../utils/calcFn";
 
 import { fields, initialState } from "./inputConfig.json";
 
@@ -25,7 +26,7 @@ const inputStore = store => {
 
 		const globalError = fields
 			.map(item => state[generateErrorFieldName(item)])
-			.filter(item => item === true)
+			.filter(item => item)
 			.length !== 0;
 
 		if(count === needToCalc && !globalError) {
@@ -44,11 +45,20 @@ const inputStore = store => {
 			...state,
 			calcValue: null,
 			globalError,
-			needToCalc: true
+			needToCalc: false
 		}
 	});
 
-	store.on("calc value", () => console.log("calc value"));
+	store.on("calc", state => {
+		let { calcValue } = state;
+		console.log(calcValue);
+		console.log(calcFn[calcValue]);
+
+		return {
+			...state,
+			[calcValue]: calcFn[calcValue](),
+		}
+	});
 }
 
 export default inputStore;

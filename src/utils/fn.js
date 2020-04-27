@@ -45,9 +45,11 @@ export const generateReducerCallback = (fieldName = "") => {
 		
 		return {
 			...state,
-			[fieldName]: value,
+			[fieldName]: isEmptyString(value) ? null : value,
 			[errorKey]: valueError,
 			[rawKey]: rawValue,
+			calcValue: null,
+			needToCalc: false,
 		}
 	}
 }

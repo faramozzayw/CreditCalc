@@ -9,18 +9,21 @@ const InterestRateField = ({ ...others }) => {
 		dispatch, 
 		interestRateError,
 		rawInterestRate,
-		calcValue
+		calcValue,
+		interestRate,
 	} = useStoreon(
 		"interestRateError",
 		"rawInterestRate",
-		"calcValue"
+		"calcValue",
+		"interestRate",
 	);
+
+	const isCalcValue = calcValue === "interestRate";
 
 	const onChange = e => {
 		dispatch("updateInterestRate", e.target.value);
 		dispatch("need calc?");
 	}
-
 
 	return (
 		<CalcField
@@ -30,7 +33,8 @@ const InterestRateField = ({ ...others }) => {
 			labelText="Відсоткова ставка"
 			inputText="Введіть відсоткову ставку"
 			onChange={onChange}
-			isCalcValue={calcValue === "interestRate"}
+			isCalcValue={isCalcValue}
+			value={interestRate}
 		/>
 	)
 }
