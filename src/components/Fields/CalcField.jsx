@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useStoreon } from "storeon/react";
+
 import {
 	Field,
 	Label,
@@ -9,14 +11,24 @@ import {
 	Help,
 } from "bloomer";
 
-const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, onChange }) => {
+const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, onChange, isCalcValue }) => {
+	const {
+		dispatch
+	} = useStoreon(null);
+
 	const state = valueError ? "danger" : "success";
 	const finalState = rawValue === "" ? "" : state;
-
+	
 	return (
 		<Field>
-			<Label isSize="medium" hasTextColor="light">{labelText}</Label>
-			<Control hasIcons>
+			<Label
+				isSize="medium"
+				hasTextColor="light"
+			>{labelText}</Label>
+			<Control 
+				hasIcons
+				isLoading={isCalcValue}
+			>
 				<Icon
 					className={icon}
 					isSize="medium"
@@ -24,7 +36,9 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 				/>
 				<Input
 					onChange={onChange}
-					isColor={finalState}
+					isActive={isCalcValue}
+					isColor={isCalcValue ? "warning" : finalState}
+					// => value={isCalcValue ? value : rawValue}
 					value={rawValue}
 					isSize="medium"
 					type="text"
@@ -32,7 +46,8 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 					required
 				/>
 			</Control>
-			{ valueError && <Help isColor='danger'>Некорректне значення!</Help> }
+			{ valueError && <Help isColor="danger">Некорректне значення!</Help> }
+			{ isCalcValue && <Help isColor="success">Це значення було автоматично обчислено</Help> }
 		</Field>
 	)
 }

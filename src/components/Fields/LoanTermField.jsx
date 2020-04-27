@@ -9,9 +9,11 @@ const LoanTermField = ({ ...others }) => {
 		dispatch, 
 		loadTermError,
 		rawLoadTerm,
+		calcValue,
 	} = useStoreon(
 		"loadTermError",
 		"rawLoadTerm",
+		"calcValue",
 	);
 
 	const onChange = e => {
@@ -27,6 +29,7 @@ const LoanTermField = ({ ...others }) => {
 			labelText="Термін кредитування"
 			inputText="Введіть термін кредитування"
 			onChange={onChange}
+			isCalcValue={calcValue === "loadTerm"}
 		/>
 	)
 }

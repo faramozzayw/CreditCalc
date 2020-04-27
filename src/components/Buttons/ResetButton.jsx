@@ -14,7 +14,7 @@ const ResetButton = () => {
             isColor='danger'
             isOutlined
             onClick={onClick}
-        >Reset all data!</Button>
+        >Очистити дані</Button>
     )
 }
 

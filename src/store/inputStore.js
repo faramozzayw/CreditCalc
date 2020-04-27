@@ -1,14 +1,12 @@
 import { 
+	isEmptyString,
 	generateDispatchListener, 
 	toInitState, 
 	generateRawFieldName,
 	generateErrorFieldName
-} from "./utils";
+} from "./../utils/fn";
 
-import { isEmptyString } from "./../utils/fn";
-import inputConfig from "./inputConfig.json";
-
-const { fields, initialState } = inputConfig;
+import { fields, initialState } from "./inputConfig.json";
 
 const resetState = toInitState(initialState);
 
@@ -34,8 +32,6 @@ const inputStore = store => {
 			const filterFn = item => isEmptyString(state[generateRawFieldName(item)])
 			const calcValue = fields.filter(filterFn)[0];
 			
-			console.log(`yes, need to calc '${calcValue}'`);
-			
 			return {
 				...state,
 				calcValue,
@@ -44,13 +40,15 @@ const inputStore = store => {
 			}
 		}
 		
-		console.log("no");
-		
 		return {
 			...state,
+			calcValue: null,
 			globalError,
+			needToCalc: true
 		}
 	});
+
+	store.on("calc value", () => console.log("calc value"));
 }
 
 export default inputStore;

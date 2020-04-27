@@ -8,10 +8,12 @@ const InterestRateField = ({ ...others }) => {
 	const {
 		dispatch, 
 		interestRateError,
-		rawInterestRate
+		rawInterestRate,
+		calcValue
 	} = useStoreon(
 		"interestRateError",
-		"rawInterestRate"
+		"rawInterestRate",
+		"calcValue"
 	);
 
 	const onChange = e => {
@@ -28,6 +30,7 @@ const InterestRateField = ({ ...others }) => {
 			labelText="Відсоткова ставка"
 			inputText="Введіть відсоткову ставку"
 			onChange={onChange}
+			isCalcValue={calcValue === "interestRate"}
 		/>
 	)
 }
