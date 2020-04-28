@@ -10,7 +10,13 @@ import {
 	generateErrorFieldName,
 } from "./../../utils/fn";
 
+import { needCalc } from "./../../store/inputActions";
+
 const CalcFieldWithState = ({ fieldname, labelText, inputText, icon }) => {
+	if(!fieldname) {
+		throw new Error(`prop 'fieldname' not found for component with labelText '${labelText}'`);
+	}
+
 	const { dispatch, calcValue } = useStoreon("calcValue");
 	
 	const raw = generateRawFieldName(fieldname);
@@ -22,7 +28,7 @@ const CalcFieldWithState = ({ fieldname, labelText, inputText, icon }) => {
 
 	const onChange = e => {
 		dispatch(`update${capitalize(fieldname)}`, e.target.value);
-		dispatch("need calc?");
+		dispatch(needCalc);
 	}
 
 	return (

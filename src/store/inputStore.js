@@ -9,6 +9,11 @@ import { calcFn } from "./../utils/calcFn";
 
 import Config, { fields, initialState } from "./inputConfig.json";
 
+import {
+	needCalc,
+	calc
+} from "./inputActions";
+
 const resetState = toInitState(initialState);
 
 const inputStore = store => {
@@ -17,7 +22,7 @@ const inputStore = store => {
 
 	fields.map(fieldName => store.on(...generateDispatchListener(fieldName)));
 
-	store.on("need calc?", state => {
+	store.on(needCalc, state => {
 		const needToCalc = Config.needToCalc ?? fields.length - 1;
 
 		const count = fields
@@ -49,7 +54,7 @@ const inputStore = store => {
 		}
 	});
 
-	store.on("calc", state => {
+	store.on(calc, state => {
 		let { calcValue } = state;
 
 		return {

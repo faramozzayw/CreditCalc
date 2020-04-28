@@ -3,7 +3,8 @@
 		"interestRate",
 		"loanTerm",
 		"payoutAmount",
-		"creditAmount"
+		"creditAmount",
+		"monthlyPayment"
 	],
 	"needToCalc": 4,
 	"initialState": {
@@ -11,16 +12,19 @@
 		"rawLoanTerm": "",
 		"rawPayoutAmount": "",
 		"rawCreditAmount": "",
+		"rawMonthlyPayment": "",
 	
 		"interestRate": null,
 		"loanTerm": null,
 		"payoutAmount": null,
 		"creditAmount": null,
-	
+		"monthlyPayment": null,
+
 		"interestRateError": false,
 		"loanTermError": false,
 		"payoutAmountError": false,
 		"creditAmountError": false,
+		"monthlyPaymentError": false,
 	
 		"needToCalc": false,
 		"calcValue": null,

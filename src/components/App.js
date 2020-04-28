@@ -9,13 +9,8 @@ import {
 	Icon,
 	Title,
 	Footer,
-	Field,
 } from "bloomer";
 
-// import LoanTermField from "./Fields/LoanTermField";
-// import InterestRateField from "./Fields/InterestRateField";
-// import PayoutAmountField from "./Fields/PayoutAmountField";
-// import CreditAmountField from "./Fields/CreditAmountField";
 import fieldConfig from "./Fields/fieldsConfig.json";
 import CalcFieldWithState from "./Fields/CalcFieldWithState"
 

@@ -9,6 +9,6 @@ form {
 }
 
 form > .field {
-  max-width: 50vmax;
-  min-width: 30vmin;
+  max-width: 100vh;
+  min-width: 30vw;
 }

@@ -11,12 +11,15 @@ import {
 	Help,
 } from "bloomer";
 
+import { calc } from "./../../store/inputActions";
+
+
 const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, onChange, isCalcValue }) => {
 	const {	dispatch } = useStoreon();
 	
 	useEffect(() => {
 		if(isCalcValue && value === null) {
-			dispatch("calc");
+			dispatch(calc);
 		}
 	}, [isCalcValue, dispatch]);
 
