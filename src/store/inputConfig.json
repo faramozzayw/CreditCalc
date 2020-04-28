@@ -1,25 +1,30 @@
 {
-    "fields": [
-        "interestRate",
-        "loanTerm",
-        "payoutAmount"
-    ],
-    "initialState": {
-        "rawInterestRate": "",
-        "rawLoanTerm": "",
-        "rawPayoutAmount": "",
-    
-        "interestRate": null,
-        "loanTerm": null,
-        "payoutAmount": null,
-    
-        "interestRateError": false,
-        "loanTermError": false,
-        "payoutAmountError": false,
-    
-        "needToCalc": false,
-        "calcValue": null,
-        
-        "globalError": false
-    }
+	"fields": [
+		"interestRate",
+		"loanTerm",
+		"payoutAmount",
+		"creditAmount"
+	],
+	"needToCalc": 4,
+	"initialState": {
+		"rawInterestRate": "",
+		"rawLoanTerm": "",
+		"rawPayoutAmount": "",
+		"rawCreditAmount": "",
+	
+		"interestRate": null,
+		"loanTerm": null,
+		"payoutAmount": null,
+		"creditAmount": null,
+	
+		"interestRateError": false,
+		"loanTermError": false,
+		"payoutAmountError": false,
+		"creditAmountError": false,
+	
+		"needToCalc": false,
+		"calcValue": null,
+		
+		"globalError": false
+	}
 }

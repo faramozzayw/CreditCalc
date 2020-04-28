@@ -9,11 +9,16 @@ import {
 	Icon,
 	Title,
 	Footer,
+	Field,
 } from "bloomer";
 
-import LoanTermField from "./Fields/LoanTermField";
-import InterestRateField from "./Fields/InterestRateField";
-import PayoutAmountField from "./Fields/PayoutAmountField";
+// import LoanTermField from "./Fields/LoanTermField";
+// import InterestRateField from "./Fields/InterestRateField";
+// import PayoutAmountField from "./Fields/PayoutAmountField";
+// import CreditAmountField from "./Fields/CreditAmountField";
+import fieldConfig from "./Fields/fieldsConfig.json";
+import CalcFieldWithState from "./Fields/CalcFieldWithState"
+
 import ResetButton from "./Buttons/ResetButton";
 
 const App = () => {
@@ -33,9 +38,9 @@ const App = () => {
 					<HeroBody>
 						<Container hasTextAlign='centered'>
 							<form>
-								<PayoutAmountField />
-								<InterestRateField />
-								<LoanTermField />
+								{
+									fieldConfig.map((props, key) => <CalcFieldWithState {...props} key={key}/>)
+								}
 								<ResetButton />
 							</form>
 						</Container>

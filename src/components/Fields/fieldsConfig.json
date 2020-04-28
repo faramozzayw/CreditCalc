@@ -1,0 +1,30 @@
+[
+	{
+		"labelText": "Сума кредиту",
+		"inputText": "Введіть суму кредиту",
+		"fieldname": "creditAmount"
+	},
+	{
+		"icon": "fa fa-money",
+		"labelText": "Сума виплат",
+		"inputText": "Введіть суму виплат",
+		"fieldname":  "payoutAmount"
+	},
+	{
+		"icon": "fa fa-percent",
+		"labelText": "Відсоткова ставка",
+		"inputText": "Введіть відсоткову ставку",
+		"fieldname": "interestRate"
+	},
+	{
+		"labelText": "Щомісячна виплата",
+		"inputText": "Введіть щомісячна виплата",
+		"fieldname": "monthlyPayment"
+	},
+	{
+		"icon": "fa fa-calendar-check-o",
+		"labelText": "Термін кредитування(в місяцях)",
+		"inputText": "Введіть термін кредитування",
+		"fieldname": "loanTerm"
+	}
+]

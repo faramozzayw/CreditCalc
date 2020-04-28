@@ -53,7 +53,7 @@ export const generateReducerCallback = (fieldName = "") => {
 }
 
 export const generateDispatchListener = (fieldName = "") => {
-	const h = "update" + capitalize(fieldName)
+	const h = `update${capitalize(fieldName)}`
 	
 	return [h, generateReducerCallback(fieldName)];
 }

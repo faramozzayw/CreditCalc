@@ -18,7 +18,7 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 		if(isCalcValue && value === null) {
 			dispatch("calc");
 		}
-	}, [isCalcValue]);
+	}, [isCalcValue, dispatch]);
 
 	const state = valueError ? "danger" : "success";
 	const finalState = rawValue === "" ? "" : state;
@@ -35,7 +35,7 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 				hasIcons
 			>
 				<Icon
-					className={icon}
+					className={icon ?? "fa fa-info"}
 					isSize="medium"
 					isAlign="left"
 				/>

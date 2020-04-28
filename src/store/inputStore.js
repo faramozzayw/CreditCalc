@@ -7,7 +7,7 @@ import {
 } from "./../utils/fn";
 import { calcFn } from "./../utils/calcFn";
 
-import { fields, initialState } from "./inputConfig.json";
+import Config, { fields, initialState } from "./inputConfig.json";
 
 const resetState = toInitState(initialState);
 
@@ -18,7 +18,7 @@ const inputStore = store => {
 	fields.map(fieldName => store.on(...generateDispatchListener(fieldName)));
 
 	store.on("need calc?", state => {
-		const needToCalc = 2;
+		const needToCalc = Config.needToCalc ?? fields.length - 1;
 
 		const count = fields
 			.map(item => Number(!isEmptyString(state[generateRawFieldName(item)])))
