@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-
-import { useStoreon } from "storeon/react";
+import React from 'react';
 
 import {
 	Field,
@@ -11,18 +9,7 @@ import {
 	Help,
 } from "bloomer";
 
-import { calc } from "./../../store/inputActions";
-
-
 const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, onChange, isCalcValue }) => {
-	const {	dispatch } = useStoreon();
-	
-	useEffect(() => {
-		if(isCalcValue && value === null) {
-			dispatch(calc);
-		}
-	}, [isCalcValue, dispatch]);
-
 	const state = valueError ? "danger" : "success";
 	const finalState = rawValue === "" ? "" : state;
 

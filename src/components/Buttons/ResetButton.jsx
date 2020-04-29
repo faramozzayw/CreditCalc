@@ -4,14 +4,17 @@ import { useStoreon } from "storeon/react";
 
 import { Button } from "bloomer"; 
 
+import {
+	reset
+} from "./../../store/inputActions";
+
 const ResetButton = () => {
     const { dispatch } = useStoreon();
-
-    const onClick = () => dispatch("reset");
+    const onClick = () => dispatch(reset);
     
     return (
         <Button 
-            isColor='danger'
+            isColor="danger"
             isOutlined
             onClick={onClick}
         >Очистити дані</Button>

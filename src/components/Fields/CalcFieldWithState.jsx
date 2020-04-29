@@ -31,6 +31,8 @@ const CalcFieldWithState = ({ fieldname, labelText, inputText, icon }) => {
 		dispatch(needCalc);
 	}
 
+	isCalcValue && console.log($value[fieldname])
+
 	return (
 		<CalcField
 			rawValue={$value[raw]}

@@ -6,7 +6,12 @@
 		"creditAmount",
 		"monthlyPayment"
 	],
-	"needToCalc": 4,
+	"targetField": [
+		"interestRate",
+		"loanTerm",
+		"payoutAmount"
+	],
+	"needToCalcMarker": 2,
 	"initialState": {
 		"rawInterestRate": "",
 		"rawLoanTerm": "",
@@ -26,9 +31,7 @@
 		"creditAmountError": false,
 		"monthlyPaymentError": false,
 	
-		"needToCalc": false,
 		"calcValue": null,
-		
 		"globalError": false
 	}
 }
