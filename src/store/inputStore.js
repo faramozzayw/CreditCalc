@@ -7,11 +7,10 @@ import {
 } from "./../utils/fn";
 import { calcFn } from "./../utils/calcFn";
 
-import InputConfig, { fields, targetField, initialState } from "./inputConfig.json";
+import InputConfig, { fields, targetField, targetFieldWithDep, initialState } from "./inputConfig.json";
 
 import {
 	needCalc,
-	calc,
 	reset
 } from "./inputActions";
 
@@ -26,7 +25,7 @@ const inputStore = store => {
 	store.on(needCalc, state => {
 		const needToCalc = InputConfig.needToCalcMarker ?? targetField.length - 1;
 
-		const count = targetField
+		const count = fields
 			.map(item => Number(!isEmptyString(state[generateRawFieldName(item)])))
 			.reduce((p, c) => p + c);
 
@@ -36,24 +35,24 @@ const inputStore = store => {
 			.length !== 0;
 
 		if(count === needToCalc && !globalError) {
-			const filterFn = item => isEmptyString(state[generateRawFieldName(item)])
-
-			const calcValue = targetField.filter(filterFn)[0];
-
-			console.log("to calc! " + calcValue);
+			const calcValues = targetFieldWithDep.filter(subarr => {
+				const target = subarr[0];
+				
+				return isEmptyString(state[generateRawFieldName(target)])
+			}).flat();
 
 			return {
 				...state,
-				calcValue,
 				globalError,
-				[calcValue]: calcFn[calcValue]({...state}),
+				calcValues: calcValues[1],
+				...calcFn[calcValues[0]]({...state}),
 			}
 		}
 		
 		return {
 			...state,
-			calcValue: null,
 			globalError,
+			calcValues: [],
 		}
 	});
 }

@@ -11,7 +11,18 @@
 		"loanTerm",
 		"payoutAmount"
 	],
-	"needToCalcMarker": 2,
+	"targetFieldWithDep": [
+		["interestRate", 
+			["interestRate", "payoutAmount"]
+		],
+		["loanTerm", 
+			["loanTerm", "payoutAmount"]
+		],
+		["payoutAmount", 
+			["payoutAmount", "creditAmount"]
+		]
+	],
+	"needToCalcMarker": 3,
 	"initialState": {
 		"rawInterestRate": "",
 		"rawLoanTerm": "",
@@ -31,7 +42,7 @@
 		"creditAmountError": false,
 		"monthlyPaymentError": false,
 	
-		"calcValue": null,
+		"calcValues": [],
 		"globalError": false
 	}
 }

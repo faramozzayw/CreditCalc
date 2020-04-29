@@ -17,21 +17,19 @@ const CalcFieldWithState = ({ fieldname, labelText, inputText, icon }) => {
 		throw new Error(`prop 'fieldname' not found for component with labelText '${labelText}'`);
 	}
 
-	const { dispatch, calcValue } = useStoreon("calcValue");
+	const { dispatch, calcValue, calcValues } = useStoreon("calcValue", "calcValues");
 	
 	const raw = generateRawFieldName(fieldname);
 	const error = generateErrorFieldName(fieldname);
 
 	const $value = useStoreon(raw, error, fieldname);
 
-	const isCalcValue = calcValue === fieldname;
+	const isCalcValue = calcValues.includes(fieldname);
 
 	const onChange = e => {
 		dispatch(`update${capitalize(fieldname)}`, e.target.value);
 		dispatch(needCalc);
 	}
-
-	isCalcValue && console.log($value[fieldname])
 
 	return (
 		<CalcField
