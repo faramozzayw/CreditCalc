@@ -7,11 +7,6 @@
 		"monthlyPayment"
 	],
 	"targetField": [
-		"interestRate",
-		"loanTerm",
-		"payoutAmount"
-	],
-	"targetFieldWithDep": [
 		["interestRate", 
 			["interestRate", "payoutAmount"]
 		],

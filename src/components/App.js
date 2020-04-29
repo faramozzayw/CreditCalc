@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import {
@@ -9,14 +9,21 @@ import {
 	Icon,
 	Title,
 	Footer,
+	Field,
+	Control,
 } from "bloomer";
 
 import fieldConfig from "./Fields/fieldsConfig.json";
 import CalcFieldWithState from "./Fields/CalcFieldWithState"
 
 import ResetButton from "./Buttons/ResetButton";
+import HelpButton from "./Buttons/HelpButton";
+import Helper from "./Helper";
 
 const App = () => {
+	const [showHelper, updateHelperStatus] = useState(false);
+	const toggle = () => updateHelperStatus(!showHelper)
+
 	return (
 		<div className="App">
 			<main>
@@ -36,7 +43,15 @@ const App = () => {
 								{
 									fieldConfig.map((props, key) => <CalcFieldWithState {...props} key={key}/>)
 								}
-								<ResetButton />
+								<Field isGrouped>
+									<Control>
+										<HelpButton toggle={toggle} />
+										<Helper isActive={showHelper} toggle={toggle}/>
+									</Control>
+									<Control>
+										<ResetButton />
+									</Control>
+								</Field>
 							</form>
 						</Container>
 					</HeroBody>

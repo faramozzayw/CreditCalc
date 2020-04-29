@@ -48,6 +48,7 @@ export const generateReducerCallback = (fieldName = "") => {
 			[fieldName]: value,
 			[errorKey]: valueError,
 			[rawKey]: rawValue,
+			calcValues: [],
 		}
 	}
 }

@@ -7,7 +7,7 @@ import {
 } from "./../utils/fn";
 import { calcFn } from "./../utils/calcFn";
 
-import InputConfig, { fields, targetField, targetFieldWithDep, initialState } from "./inputConfig.json";
+import InputConfig, { fields, targetField, initialState } from "./inputConfig.json";
 
 import {
 	needCalc,
@@ -23,7 +23,7 @@ const inputStore = store => {
 	fields.map(fieldName => store.on(...generateDispatchListener(fieldName)));
 
 	store.on(needCalc, state => {
-		const needToCalc = InputConfig.needToCalcMarker ?? targetField.length - 1;
+		const needToCalc = InputConfig.needToCalcMarker ?? fields.length - 1;
 
 		const count = fields
 			.map(item => Number(!isEmptyString(state[generateRawFieldName(item)])))
@@ -35,7 +35,7 @@ const inputStore = store => {
 			.length !== 0;
 
 		if(count === needToCalc && !globalError) {
-			const calcValues = targetFieldWithDep.filter(subarr => {
+			const calcValues = targetField.filter(subarr => {
 				const target = subarr[0];
 				
 				return isEmptyString(state[generateRawFieldName(target)])
