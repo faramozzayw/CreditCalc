@@ -43,7 +43,7 @@ const App = () => {
 								{
 									fieldConfig.map((props, key) => <CalcFieldWithState {...props} key={key}/>)
 								}
-								<Field isGrouped>
+								<Field isGrouped="centered">
 									<Control>
 										<HelpButton toggle={toggle} />
 										<Helper isActive={showHelper} toggle={toggle}/>

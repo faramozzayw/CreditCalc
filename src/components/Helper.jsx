@@ -1,11 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import {
 	Modal,
 	ModalBackground,
-	ModalContent,
-	ModalClose,
-
 	ModalCard,
 	ModalCardHeader,
 	ModalCardTitle,
@@ -14,60 +11,46 @@ import {
 	Title,
 } from "bloomer";
 
+import helper from "./helper.json";
+
+
+const CustomHelp = ({ title, input, output }) =>  (
+	<>
+		<Title 
+			hasTextColor="dark"
+			tag="h5"
+			isSize={5}
+		>{title}</Title>
+		<p>
+			Вхідні дані {input.map((item, i) => <i key={i}>{item}{i !== input.length - 1  ? ", " : ""}</i>)}.
+		</p>
+		<span>Результат:</span>
+		<ul>
+			{
+				output.map((item, i) => <li key={i}>- {item}</li>)
+			}
+		</ul>
+	</>
+)
+
 const Helper =  ({ isActive, toggle }) => {
 	return (
 		<Modal isActive={isActive}>
 			<ModalBackground />
 			<ModalCard>
 				<ModalCardHeader>
-					<ModalCardTitle>Пояснення </ModalCardTitle>
+					<ModalCardTitle>Коротке пояснення</ModalCardTitle>
 					<Delete onClick={toggle} />
 				</ModalCardHeader>
 				<ModalCardBody hasTextColor="dark">
-					<Title 
-						hasTextColor="dark"
-						tag="h5"
-						isSize={5}
-					>Если надо найти суму выплат:</Title>
-					<p>
-						Вводишь <i>проценты</i>, <i>срок кредитования</i> и <i>ежемесячные выплаты</i>.
-					</p>
-					Вывод:
-					<ul>
-						<li>- сума кредита </li>
-						<li>- сума выплат </li>
-					</ul>
-
-					<hr />
-
-					<Title 
-						hasTextColor="dark"
-						tag="h5"
-						isSize={5}
-					>Если надо проценты:</Title>
-					<p>
-						Вводишь <i>срок</i>, <i>суму кредита</i> и <i>ежемесячные выплаты</i>.
-					</p>
-					Вывод:
-					<ul>
-						<li>- проценты </li>
-						<li>- сума выплат </li>
-					</ul>
-
-					<hr />
-
-					<Title 
-						hasTextColor="dark"
-						tag="h5"
-						isSize={5}
-					>Если надо найти срок:</Title>
-					<p>
-						Вводишь <i>суму кредита</i>, <i>проценты</i> и <i>ежемесячные выплаты</i></p>.
-					Вывод:
-					<ul>
-						<li>- срок </li>
-						<li>- сума выплат </li>
-					</ul>
+					{
+						helper.map((item, i) => (
+							<>
+								<CustomHelp {...item} key={i}/>
+								{ i !== helper.length - 1 && <hr /> }
+							</>
+						))
+					}
 				</ModalCardBody>
 			</ModalCard>
 		</Modal>
