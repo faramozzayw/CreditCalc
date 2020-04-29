@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
 	Field,
@@ -10,6 +10,8 @@ import {
 } from "bloomer";
 
 const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, onChange, isCalcValue }) => {
+	const [onFocus, toggleFocus] = useState(false);
+	
 	const state = valueError ? "danger" : "success";
 	const finalState = rawValue === "" ? "" : state;
 
@@ -30,10 +32,11 @@ const CalcField = ({ value, rawValue, valueError, icon, labelText, inputText, on
 					isAlign="left"
 				/>
 				<Input
+					onFocus={() => toggleFocus(true)} 
+					onBlur={() => toggleFocus(false)}
 					onChange={onChange}
-					isActive={isCalcValue}
-					isColor={isCalcValue ? "warning" : finalState}
-					value={isCalcValue ? finalValue : rawValue}
+					isColor={isCalcValue && !onFocus ? "warning" : finalState}
+					value={isCalcValue && !onFocus ? finalValue : rawValue}
 					isSize="medium"
 					type="text"
 					placeholder={inputText}
