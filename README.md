@@ -1,8 +1,5 @@
 ## About Project
 
-### On English:
-WebPaint is a simple and beautiful application that allows you to draw
-
 Technology stack:
 * JS(ES6+)
 * React
